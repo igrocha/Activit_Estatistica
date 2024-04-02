@@ -1,0 +1,27 @@
+import pandas as pd
+import numpy as np
+
+# Criando uma tabela com crescimento maior nos preços das ações
+dados = {'Data': ['2024-03-25', '2024-03-26', '2024-03-27', '2024-03-28', '2024-03-29'],
+         'Preço da Ação': [50, 55, 60, 65, 70]}
+
+# Convertendo para o tipo datetime
+dados['Data'] = pd.to_datetime(dados['Data'])
+
+# Criando DataFrame
+df = pd.DataFrame(data=dados)
+
+# Exibindo o DataFrame
+print(df)
+
+# Extraíndo os preços da ação da tabela
+precos_acao = [50, 55, 60, 65, 70]
+
+# Calculando o lucro do crescimento
+preco_inicial = precos_acao[0]
+preco_final = precos_acao[-1]
+lucro = preco_final - preco_inicial
+
+print("Preço inicial da ação:", preco_inicial)
+print("Preço final da ação:", preco_final)
+print("Lucro do crescimento:", lucro)
