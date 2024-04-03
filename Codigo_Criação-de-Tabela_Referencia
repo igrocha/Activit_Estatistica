@@ -25,6 +25,7 @@ df = pd.DataFrame(data=dados)
 print(df)
 
 ###########################################################################################
+#consulta com 10 anos de funcionamento
 
 # Definindo o número de meses em 10 anos
 numero_meses = 10 * 12
