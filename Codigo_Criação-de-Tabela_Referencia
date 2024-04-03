@@ -1,27 +1,36 @@
 import pandas as pd
-import numpy as np
 
-# Criando uma tabela com crescimento maior nos preços das ações
-dados = {'Data': ['2024-03-25', '2024-03-26', '2024-03-27', '2024-03-28', '2024-03-29'],
-         'Preço da Ação': [50, 55, 60, 65, 70]}
+# Criando uma tabela para calcular o tempo necessário para começar a lucrar
+investimento_inicial = 200000  # Investimento inicial em reais
+retorno_mensal = 5000  # Retorno mensal em reais
 
-# Convertendo para o tipo datetime
-dados['Data'] = pd.to_datetime(dados['Data'])
+# Inicializando as variáveis
+tempo = 0
+saldo = -investimento_inicial
 
-# Criando DataFrame
+# Lista para armazenar o saldo de cada mês
+saldos_por_mes = []
+
+# Calculando o saldo de cada mês até que o saldo seja positivo
+while saldo < 0:
+    saldo += retorno_mensal
+    saldos_por_mes.append(saldo)
+    tempo += 1
+
+# Criando a tabela com os meses e saldos correspondentes
+dados = {'Mês': range(1, tempo+1), 'Saldo (R$)': saldos_por_mes}
 df = pd.DataFrame(data=dados)
 
-# Exibindo o DataFrame
+# Exibindo a tabela
 print(df)
 
-# Extraíndo os preços da ação da tabela
-precos_acao = [50, 55, 60, 65, 70]
+###########################################################################################
 
-# Calculando o lucro do crescimento
-preco_inicial = precos_acao[0]
-preco_final = precos_acao[-1]
-lucro = preco_final - preco_inicial
+# Definindo o número de meses em 10 anos
+numero_meses = 10 * 12
 
-print("Preço inicial da ação:", preco_inicial)
-print("Preço final da ação:", preco_final)
-print("Lucro do crescimento:", lucro)
+# Calculando o lucro total em 10 anos
+lucro_total = retorno_mensal * numero_meses
+
+print("Lucro total em 10 anos: R$", lucro_total)
+
