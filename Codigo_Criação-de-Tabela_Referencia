@@ -35,3 +35,37 @@ lucro_total = retorno_mensal * numero_meses
 
 print("Lucro total em 10 anos: R$", lucro_total)
 
+############################################################################################
+
+import matplotlib.pyplot as plt
+
+# Criando uma tabela para calcular o tempo necessário para começar a lucrar
+investimento_inicial = 200000  # Investimento inicial em reais
+retorno_mensal = 5000  # Retorno mensal em reais
+
+# Inicializando as variáveis
+tempo = 0
+saldo = -investimento_inicial
+
+# Lista para armazenar o saldo de cada mês
+saldos_por_mes = []
+
+# Calculando o saldo de cada mês até que o saldo seja positivo
+while saldo < 0:
+    saldo += retorno_mensal
+    saldos_por_mes.append(saldo)
+    tempo += 1
+
+# Criando a tabela com os meses e saldos correspondentes
+dados = {'Mês': range(1, tempo+1), 'Saldo (R$)': saldos_por_mes}
+df = pd.DataFrame(data=dados)
+
+# Plotando o gráfico
+plt.figure(figsize=(10, 6))
+plt.plot(df['Mês'], df['Saldo (R$)'], marker='o', color='b', linestyle='-')
+plt.title('Saldo ao longo do tempo')
+plt.xlabel('Mês')
+plt.ylabel('Saldo (R$)')
+plt.grid(True)
+plt.show()
+
